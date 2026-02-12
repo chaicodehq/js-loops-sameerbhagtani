@@ -36,5 +36,27 @@
  *   rangoli(3) // => ["  *", " * *", "* * *", " * *", "  *"]
  */
 export function rangoli(n) {
-  // Your code here
+    if (!Number.isInteger(n) || n <= 0) return [];
+
+    let arr = [];
+
+    for (let i = 1; i <= n; i++) {
+        let line = "";
+
+        for (let j = 1; j <= n - i; j++) {
+            line += " ";
+        }
+
+        for (let j = 1; j <= i; j++) {
+            line += "*";
+
+            if (j !== i) {
+                line += " ";
+            }
+        }
+
+        arr.push(line);
+    }
+
+    return [...arr, ...arr.toReversed().slice(1)];
 }
